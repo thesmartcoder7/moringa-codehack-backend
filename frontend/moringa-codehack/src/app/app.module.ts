@@ -12,6 +12,7 @@ import { TakeTestComponent } from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     CreateTestComponent,
     PerformanceListComponent,
     LandingPageComponent,
+    LoginComponent,
    
   ],
   imports: [
