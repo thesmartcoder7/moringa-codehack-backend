@@ -53,70 +53,6 @@ class Assessment(models.Model):
 
 
 
-class MCQuestion(models.Model):
-    text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.text)
-
-    def get_answers(self):
-        """ 
-        This method basically gets all the answers 
-        that are related to this question throu
-        reverse relationship
-        """
-        return self.mcanswer_set.all()
-
-
-
-class MCAnswer(models.Model):
-    text = models.TextField()
-    correct = models.BooleanField(default=False)
-    question = models.ForeignKey(MCQuestion, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
-
-
-
-class SQuestion(models.Model):
-    text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    marked_as_right = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.text)
-
-
-
-class KataQuestion(models.Model):
-    text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    all_tests_passed = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.text)
-
-    def get_tests(self):
-        return self.katatest_set.all()
-
-
-
-class KataTest(models.Model):
-    text = models.CharField(max_length=5000)
-    question = models.ForeignKey(KataQuestion, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"question: {self.question.text}, testcase: {self.text}"
-
-
-
 class Grade(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -125,15 +61,15 @@ class Grade(models.Model):
     def __str__(self):
         return str(self.pk)
 
+    class Meta:
+        verbose_name_plural = 'Student Grades'
 
 
-class Feedback(models.Model):
+
+
+class Invite(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
-    student = models.ForeignKey(User, on_delete=models.CASCADE)
-    feedback = models.TextField()
-
-    def __str__(self):
-        return f"Feedback for {self.student.username.title()} on {self.assessment}"
+    users = models.TextField(help_text='Add student emails separated by spaces')
 
     class Meta:
-        verbose_name_plural = 'Feedback'
+        verbose_name_plural = 'All Invites'
