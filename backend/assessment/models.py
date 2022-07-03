@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,13 +9,20 @@ DIFFICULTY_LEVELS = (
     ('hard', 'hard'),
 )
 
+CATEGORIES = (
+    ('multiple_choice', 'multiple_choice'),
+    ('kata', 'kata'),
+    ('subjective', 'subjective')
+)
+
 
 class Assessment(models.Model):
     name = models.CharField(max_length=3000)
     topic = models.CharField(max_length=500)
-    time_limit = models.PositiveIntegerField(help_text='duration of assessment in minutes')
-    pass_mark = models.PositiveIntegerField(help_text='score in %')
+    time_limit = models.PositiveIntegerField(help_text='Duration of assessment in minutes')
+    pass_mark = models.PositiveIntegerField(help_text='Pass Score in %')
     difficulty = models.CharField(max_length=6, choices=DIFFICULTY_LEVELS)
+    category = models.CharField(max_length=20, choices=CATEGORIES, null=True)
 
     def __str__(self):
         return f"{self.name} - {self.topic}"
@@ -27,11 +33,27 @@ class Assessment(models.Model):
         are related to this Assessment 
         through the reverse relationship
         """
-        return self.question_set.all()
+        return self.mcquestion_set.all()
+
+    def get_katas(self):
+        """
+        This gets all the kata questions that 
+        are related to this assessment through
+        the reverse relationship
+        """
+        return self.kataquestion_set.all()
+
+    def get_subjective(self):
+        """
+        This gets all the subjective questions that 
+        are related to this assessment through
+        the reverse relationship
+        """
+        return self.squestion_set.all()
 
 
 
-class Question(models.Model):
+class MCQuestion(models.Model):
     text = models.TextField()
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -45,18 +67,53 @@ class Question(models.Model):
         that are related to this question throu
         reverse relationship
         """
-        return self.answer_set.all()
+        return self.mcanswer_set.all()
 
 
 
-class Answer(models.Model):
+class MCAnswer(models.Model):
     text = models.TextField()
     correct = models.BooleanField(default=False)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(MCQuestion, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
+
+
+
+class SQuestion(models.Model):
+    text = models.TextField()
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    marked_as_right = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.text)
+
+
+
+class KataQuestion(models.Model):
+    text = models.TextField()
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    all_tests_passed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.text)
+
+    def get_tests(self):
+        return self.katatest_set.all()
+
+
+
+class KataTest(models.Model):
+    text = models.CharField(max_length=5000)
+    question = models.ForeignKey(KataQuestion, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"question: {self.question.text}, testcase: {self.text}"
 
 
 
@@ -67,6 +124,7 @@ class Grade(models.Model):
     
     def __str__(self):
         return str(self.pk)
+
 
 
 class Feedback(models.Model):
