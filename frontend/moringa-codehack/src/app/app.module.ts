@@ -13,6 +13,7 @@ import { CreateTestComponent } from './components/create-test/create-test.compon
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
     PerformanceListComponent,
     LandingPageComponent,
     LoginComponent,
+    SignupComponent,
    
   ],
   imports: [
