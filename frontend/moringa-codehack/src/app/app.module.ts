@@ -31,7 +31,6 @@ import { SignupComponent } from './components/signup/signup.component';
     LandingPageComponent,
     LoginComponent,
     SignupComponent,
-   
   ],
   imports: [
     BrowserModule,
