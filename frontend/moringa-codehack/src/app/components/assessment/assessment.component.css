@@ -1,12 +1,12 @@
 body{
-  padding: 30px;
+  padding: 20px;
 }
 .container {
   border-radius: 8px;
   margin-top: 60px;
   display: flex;
   background-color: rgb(255, 253, 245);
-  width: 180vh;
+  width: 190vh;
   height: 150px;
 }
 
@@ -38,7 +38,7 @@ margin: 20px;
   margin: 40px;
 }
 .action{
-  padding-left: 650px;
+  padding-left: 300px;
 }
 .main{
   margin-left: 20px;
@@ -64,7 +64,7 @@ padding-top: 5px;
 padding-right: 70px;
 padding-bottom: 5px;
 margin-right: 10px;
-width:50px;  
+width:120px;  
 
 }
 
