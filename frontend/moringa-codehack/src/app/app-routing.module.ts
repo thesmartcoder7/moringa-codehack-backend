@@ -4,16 +4,18 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { AssessmentComponent  } from './components/assessment/assessment.component';
+import { PractiseTestComponent } from './components/practise-test/practise-test.component';
 // import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  {path:'',component:LandingPageComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
-  { path: '', component: LandingPageComponent},
-  { path: 'student-dashboard', component: StudentDashboardComponent}
- 
+  { path:'',component:LandingPageComponent},
+  { path:'login',component:LoginComponent},
+  { path:'signup',component:SignupComponent},
+  { path: 'student-dashboard', component: StudentDashboardComponent},
+  { path: 'assessment', component: AssessmentComponent},
+  { path: 'practise-test', component: PractiseTestComponent},
+
 ];
 
 @NgModule({

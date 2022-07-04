@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    'assessment.apps.AssessmentConfig'
+    'assessment.apps.AssessmentConfig',
+    'feedback.apps.FeedbackConfig',
+    'questions.apps.QuestionsConfig'
 ]
 
 MIDDLEWARE = [
