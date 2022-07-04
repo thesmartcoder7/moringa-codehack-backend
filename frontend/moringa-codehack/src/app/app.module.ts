@@ -32,13 +32,8 @@ import { SignupComponent } from './components/signup/signup.component';
     LoginComponent,
     SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
 
-  ],
-  
   providers: [],
   bootstrap: [AppComponent],
 })
