@@ -13,7 +13,7 @@ import { TakeTestComponent } from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { AssessmentComponent } from './components/assessment/assessment.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { SignupComponent } from './components/signup/signup.component';
     CreateTestComponent,
     PerformanceListComponent,
     LandingPageComponent,
-    SignupComponent,
+    AssessmentComponent,
   ],
   imports: [BrowserModule, 
     HttpClientModule, 
