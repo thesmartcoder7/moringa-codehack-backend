@@ -66,6 +66,19 @@ class Grade(models.Model):
 
 
 
+class Feedback(models.Model):
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    feedback = models.TextField()
+
+    def __str__(self):
+        return f"Feedback for {self.student.username.title()} on {self.assessment}"
+
+    class Meta:
+        verbose_name_plural = 'Feedback'
+
+
+
 
 class Invite(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
