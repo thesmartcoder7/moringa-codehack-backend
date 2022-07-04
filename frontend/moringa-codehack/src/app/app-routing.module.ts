@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { AssessmentComponent  } from './components/assessment/assessment.component';
 import { PractiseTestComponent } from './components/practise-test/practise-test.component';
 // import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent},
+  { path:'',component:LandingPageComponent},
+  { path:'login',component:LoginComponent},
+  { path:'signup',component:SignupComponent},
   { path: 'student-dashboard', component: StudentDashboardComponent},
   { path: 'assessment', component: AssessmentComponent},
   { path: 'practise-test', component: PractiseTestComponent},
-
 
 ];
 

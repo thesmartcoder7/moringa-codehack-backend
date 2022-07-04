@@ -13,8 +13,8 @@ import { TakeTestComponent } from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { AssessmentComponent } from './components/assessment/assessment.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +29,17 @@ import { AssessmentComponent } from './components/assessment/assessment.componen
     CreateTestComponent,
     PerformanceListComponent,
     LandingPageComponent,
-    AssessmentComponent,
+    LoginComponent,
+    SignupComponent,
+   
   ],
-  imports: [BrowserModule, 
-    HttpClientModule, 
-    AppRoutingModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+
+  ],
+  
   providers: [],
   bootstrap: [AppComponent],
 })
