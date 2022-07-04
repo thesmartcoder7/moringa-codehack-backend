@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'assessment.apps.AssessmentConfig',
-    'feedback.apps.FeedbackConfig',
     'questions.apps.QuestionsConfig'
 ]
 
