@@ -5,12 +5,19 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TmDashboardComponent } from './components/tm-dashboard/tm-dashboard.component';
 import { TmLandingComponent  } from './components/tm-landing/tm-landing.component';
+import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
+import { AssessmentComponent  } from './components/assessment/assessment.component';
+import { PractiseTestComponent } from './components/practise-test/practise-test.component';
+// import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  {path: '', redirectTo:'landing', pathMatch:'full'},
+  {path:'',component:LandingPageComponent},
   {path:'landing',component:LandingPageComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
+  { path: 'student-dashboard', component: StudentDashboardComponent},
+  { path: 'assessment', component: AssessmentComponent},
+  { path: 'practise-test', component: PractiseTestComponent},
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
   {path:'tmlanding/login', component:TmLandingComponent,
@@ -21,7 +28,7 @@ children:[{
 children:[{
   path:'', component:TmDashboardComponent
 }]},
-
+  
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,13 +17,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { TmLandingComponent } from './components/tm-landing/tm-landing.component' ;
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MatToolbarModule } from '@angular/material/toolbar';
-// import { MatSidenavModule } from '@angular/material/sidenav';
-// import { MatButtonModule } from '@angular/material/button';
-// import { MatIconModule } from '@angular/material/icon';
-// import { MatDividerModule } from '@angular/material/divider';
-
 
 @NgModule({
   declarations: [
@@ -40,21 +34,15 @@ import { TmLandingComponent } from './components/tm-landing/tm-landing.component
     LoginComponent,
     SignupComponent,
     TmLandingComponent,
-    
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    // BrowserAnimationsModule,
-    // MatToolbarModule,
-    // MatSidenavModule,
-    // MatButtonModule,
-    // MatIconModule,
-    // MatDividerModule,
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

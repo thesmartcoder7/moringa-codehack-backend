@@ -1,0 +1,116 @@
+body{
+  padding: 20px;
+}
+.container {
+  border-radius: 8px;
+  margin-top: 40px;
+  display: flex;
+  background-color: rgb(255, 253, 245);
+  width: 190vh;
+  height: 150px;
+}
+
+.navigation{
+
+   padding-left: 800px;
+   margin-top: 50px;
+   margin-bottom: 5px;
+   margin-left: 40px;
+   }
+
+.time{
+  width:20px;
+  height: 20px;
+}
+button {
+  background-color: #F35011;
+  color: white;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 8px;
+}
+.photo{
+margin: 20px;
+
+}
+.timeLimit{
+  margin-left: 20px;
+  margin-top: 40px;
+}
+.action{
+  margin-top: 36px;
+  padding-left: 289px;
+}
+.main{
+  margin-top: 10px;
+  display: block !important;
+  color: rgb(0, 0, 5);
+  font-size: large;
+}
+
+button.status{
+  color: white;
+  font-size: light;
+  background-color: #F35011;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+}
+
+button.practice{
+color:white;
+font-size: bold;
+background-color: #F35011;
+padding-top: 5px;
+padding-right: 70px;
+padding-bottom: 5px;
+margin-right: 10px;
+width:120px;  
+
+}
+
+
+button.real {
+  color: white;
+  font-size: bold;
+  background-color: #F35011;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+
+}
+
+/* button{
+  color:white;
+  font-size: bold;
+  background-color:#FF6900;
+  padding-top: 5px;
+  padding-bottom: 5px;
+} */
+
+.holder{
+display:inline-block;
+width: 110px;
+
+}
+
+img{
+  width: 100px;
+  height: 100px;
+}
+.practice{
+  width:5px;
+}
+
+.flex-container>div {
+  background-color: inherit;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  width: 20vh;
+  height: 100px;
+  
+}
