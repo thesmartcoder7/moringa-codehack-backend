@@ -17,7 +17,7 @@ class KataTestInline(admin.TabularInline):
 class KataQuestionAdmin(admin.ModelAdmin):
     inlines = [KataTestInline]
 
-admin.site.register(KataQuestion)
+admin.site.register(KataQuestion, KataQuestionAdmin)
 admin.site.register(KataTest)
 
 admin.site.register(SQuestion)
