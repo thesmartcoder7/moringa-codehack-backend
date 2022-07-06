@@ -97,11 +97,15 @@ def login(request):
 def authenticated_user(request):
     token = request.COOKIES.get('jwt')
     if not token:
+        print('Code gets stuck here')
         raise AuthenticationFailed('Unauthenticated!')
-
+       
     try:
+
         payload = jwt.decode(token, 'this87295is9874my8574secret', algorithms=['HS256'])
+        print('Code goes past the try')
     except jwt.ExpiredSignatureError:
+        print('Code goes is riddled with bugs')
         raise AuthenticationFailed('Unauthenticated!')
 
     user = User.objects.filter(id=payload['id']).first()
