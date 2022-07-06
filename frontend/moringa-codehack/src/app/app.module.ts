@@ -40,6 +40,7 @@ import { TmLandingComponent } from './components/tm-landing/tm-landing.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
 
   providers: [],
