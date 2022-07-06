@@ -57,7 +57,7 @@ tr:nth-child(even) {
   background-color: #3A4863;
 }
 
-#publishform input{
+#recepientinput, #subjectinput{
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -74,6 +74,11 @@ tr:nth-child(even) {
   background-color: #101F3C;
   border-color: #F35011;
   color: #F35011;
+  height:40px;
+  width: 150px;
+}
+#sendinvite{
+  display: none;
 }
 #publish{
   color:white
@@ -82,13 +87,21 @@ tr:nth-child(even) {
   margin-left: 10%;
 }
 #messageinput{
-  margin-left: 20%;
+  margin-left: 21%;
+  margin-top: 4px;
+  height: 20px;
+  border-style: groove;
+  border-color: #fff;
+  border-width: 0.05px;
+  background-color: #101F3C;
+  width: 300px;
+  height: 60px;
 }
 #sendbtn{
-  margin-left: 20%;
+  margin-left: 21%;
   margin-top: 10px;
   margin-bottom: 5px;
 }
-.no-outline:focus {
+.no-outline:focus{
   outline: none;
 }

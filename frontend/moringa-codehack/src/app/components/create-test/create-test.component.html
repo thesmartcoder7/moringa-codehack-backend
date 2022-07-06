@@ -2,7 +2,7 @@
   <button  id="navbtns" data-toggle="modal" data-target="#addquestion" > <i class="fa fa-plus" style="margin-right: 7px; font-size:small;"></i>Add</button>
   <button  id="navbtns" data-toggle="modal" data-target=".bd-example-modal-lg"> Publish</button>
   <a class="active" href="/tmlanding/create-test" id="navlinks" style="color: #F35011;">Assessments</a>
-  <a href="" id="navlinks">Candidates</a>
+  <a href="/tmlanding/create-test" id="navlinks">Candidates</a>
   <hr>
   <div id="quetable">
     <table>
@@ -82,19 +82,22 @@
           </form>
           <br>
           <div class="container" >   
-          <input  type="checkbox"> Send Invite?
+          <input id="sendinvitecheckbox" type="checkbox"> Send Invite?
+          <div id="sendinvite">
           <div class ="row" style="background-color:#101F3C; justify-content: center;">
-            <h6 style="text-decoration: underline;text-decoration-color: white;" >Send Invite</h6></div>
+            <h6 style="text-decoration: underline;text-decoration-color: white;" >Send Invite</h6>
+          </div>
             <div class="row" style="background-color:#101F3C; justify-content: left;">
             <form action="" id="publishform">
               &nbsp;<label for="recepient"><b>To : &nbsp;</b></label>
               <input type="text" id="recepientinput" class="no-outline" placeholder="Enter emails separated by commas" name="recepient"   required><br>
               &nbsp;<label for="Subject"><b>Subject : &nbsp;</b></label>
               <input type="text" id="subjectinput" class="no-outline" placeholder="Subject of Mail" name="subject" required><br>
-              <input type="textarea" id="messageinput" class="no-outline" placeholder="Enter your message" name="message" required><br>
+              <textarea id="messageinput" placeholder="Enter your message" name="message" required></textarea><br>
               <button action="submit" id="sendbtn">Send</button>
             </form>
           </div>
+        </div>
 
 
           
