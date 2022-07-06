@@ -21,16 +21,20 @@ export class LandingPageComponent implements OnInit {
       .get('http://localhost/8000/api/authenticated_user/', {
         withCredentials: true,
       })
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
-        },
-        error: (error: any) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('complete');
-        },
+      .subscribe((res) => {
+        console.log(res);
       });
+    // .subscribe({
+    //   next: (res: any) => {
+    //     console.log(res);
+    //   },
+    //   error: (error: any) => {
+    //     console.log(error);
+    //   },
+    //   complete: () => {
+    //     console.log('complete');
+    //   },
+    // });
+    console.log('user has logged in successfully');
   }
 }
