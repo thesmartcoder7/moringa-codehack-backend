@@ -1,13 +1,14 @@
-
-.container{
-  background-color: #101F3C;
+.container {
+  background-color: #101f3c;
+  height: 100%;
+  width: 100%;
 }
 .card {
-  background-color: #3A4863;
+  background-color: #3a4863;
 }
-#title{
-  color:#fa510f;
+#title {
+  color: #fa510f;
 }
-.btn{
-  background-color: #FF6900;
+.btn {
+  background-color: #ff6900;
 }

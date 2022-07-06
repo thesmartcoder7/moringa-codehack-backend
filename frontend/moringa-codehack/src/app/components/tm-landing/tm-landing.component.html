@@ -1,0 +1,95 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    
+    <!-- This holds the worded icons -->
+    <ul class="sidebar-nav" id="sidebar-nav" style="margin-left:0;">
+      <li class="sidebar-brand">
+        <a id="menu-toggle" style="margin-top:20px;float:right;"> <i class="fa fa-bars "
+            style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> </a>
+
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/dashboard"><i class="fa fa-sort-alpha-asc " aria-hidden="true"> </i> <span
+            style="margin-left:1px;"> Dashboard</span> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/create-test"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> <span
+            style="margin-left:1px;">
+            Test Questions</span> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/peformance-list"> <i class="fa fa-bar-chart-o" aria-hidden="true"> </i>
+          <span style="margin-left:1px;"> Test
+            Sample Statistics </span> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/grades"><i class="fa fa-comment-o " aria-hidden="true"> </i> <span
+            style="margin-left:1px;"> Grade & Feedback
+          </span> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/account"> <i class="fa fa-info-circle" aria-hidden="true"> </i> <span
+            style="margin-left:1px;">
+            Account</span> </a>
+      </li>
+    </ul>
+    <!-- this holds the icons only -->
+    <ul class="sidebar-nav" id="sidebar-nav-icons" style="margin-left:0;">
+      <li class="sidebar-brand">
+        <a id="menu-toggle-icons" style="margin-top:20px;float:right;"> <i class="fa fa-bars "
+            style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/dashboard"> <i class="fa fa-sort-alpha-asc " aria-hidden="true"> </i> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/create-test"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/peformance-list"> <i class="fa fa-bar-chart-o" aria-hidden="true"> </i> </a>
+      </li>
+
+      <li>
+        <a href="#" routerLink="/tmlanding/grades"><i class="fa fa-comment-o" aria-hidden="true"> </i> </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/tmlanding/account"><i class="fa fa-info-circle" aria-hidden="true"> </i> </a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- <div id="sidebar-wrapper-icons">
+            <ul class="sidebar-nav" id="sidebar-nav-icons" style="margin-left:0;">
+                <li class="sidebar-brand">
+                 <a   id="menu-toggle-icons" style="margin-top:20px;float:right;" > <i class="fa fa-bars " style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> </a>
+                    
+                </li>
+                <li>
+                    <a href="#" routerLink="/tmdashboard"><i class="fa fa-sort-alpha-asc " aria-hidden="true"> </i>   </a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i>  </a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fa fa-puzzle-piece" aria-hidden="true"> </i>  </a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fa fa-font" aria-hidden="true"> </i>  </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-info-circle " aria-hidden="true"> </i>  </a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fa fa-comment-o" aria-hidden="true"> </i>  </a>
+                </li>
+            </ul>
+        </div> -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </div>
+</div>

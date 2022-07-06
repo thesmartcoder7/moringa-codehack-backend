@@ -1,0 +1,52 @@
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+} 
+#navbtns{
+  background-color:#3A4863;
+  color: white;
+  border: none;
+  margin: 1%;
+  width: 10%;
+  height:40px;
+  border-radius: 5%;
+}
+#navlinks{
+  color: white;
+  margin: 1% ; 
+}
+
+#navlinks:visited {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+}
+#navlinks:hover {
+  color: #3A4863;
+  background-color: transparent;
+  text-decoration: underline;
+}
+#navlinks:active {
+  color: #F35011;
+  background-color: transparent;
+  text-decoration: underline;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color:#fff;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #3A4863;
+}

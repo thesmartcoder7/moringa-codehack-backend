@@ -15,6 +15,8 @@ import { PerformanceListComponent } from './components/performance-list/performa
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { TmLandingComponent } from './components/tm-landing/tm-landing.component' ;
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { SignupComponent } from './components/signup/signup.component';
     LandingPageComponent,
     LoginComponent,
     SignupComponent,
+    TmLandingComponent,
+   
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
-
+    FormsModule,
+    HttpClientModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent],
 })
