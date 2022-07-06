@@ -7,7 +7,8 @@ import { TmDashboardComponent } from './components/tm-dashboard/tm-dashboard.com
 import { TmLandingComponent  } from './components/tm-landing/tm-landing.component';
 import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { AssessmentComponent  } from './components/assessment/assessment.component';
-import { PractiseTestComponent } from './components/practise-test/practise-test.component';
+import { PractiseTestComponent } from './components/practise-test/practise-test.component',
+import { TakeTestComponent} from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { GradesComponent } from './components/grades/grades.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
   {path:'tmlanding/login', component:TmLandingComponent,
+   { path: 'take-test', component: TakeTestComponent },
 children:[{
   path:'', component:LoginComponent
 }]},
@@ -43,7 +45,7 @@ children:[{
 children:[{
   path:'', component:GradesComponent
 }]},
-  
+
 ];
 
 @NgModule({
