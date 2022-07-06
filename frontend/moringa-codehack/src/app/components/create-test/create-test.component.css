@@ -36,3 +36,17 @@ hr {
   background-color: transparent;
   text-decoration: underline;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color:#fff;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #3A4863;
+}

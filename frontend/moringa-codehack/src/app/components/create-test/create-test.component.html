@@ -1,9 +1,21 @@
 <div class="container justify-content-center">
-  <button btn-lg id="navbtns"> <i class="fa fa-plus"></i>Add</button>
-  <button btn-lg id="navbtns"> Publish</button>
-  <a href="" id="navlinks">Questions</a>
+  <button  id="navbtns"> <i class="fa fa-plus" style="margin-right: 7px; font-size:small;"></i>Add</button>
+  <button  id="navbtns" onclick="document.getElementById('quetable').style.display='block'" class="w3-button w3-black"> Publish</button>
+  <a class="active" href="/tmlanding/create-test" id="navlinks" style="color: #F35011;">Assessments</a>
   <a href="" id="navlinks">Candidates</a>
   <hr>
-
-
+  <div id="quetable">
+    <table>
+      <tr>
+      <th>Assesment</th>
+      <th>Difficulty</th>
+      <th>Passmark</th>
+      </tr>
+      <tr>
+      <td>Python Arrays</td>
+      <td>Easy</td>
+      <td>10</td>
+      </tr>
+    </table>
+  </div>
 </div>
