@@ -50,3 +50,45 @@ th, td {
 tr:nth-child(even) {
   background-color: #3A4863;
 }
+#addquestion{
+  color:white;
+}
+#addquestioncontent{
+  background-color: #3A4863;
+}
+
+#publishform input{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #101F3C;
+  border-color: white;
+  border-width: 0.05px;
+  width: 300px;
+}
+#publishcontent{
+  background-color: #3A4863;
+}
+#publishbtn, #sendbtn, #savebtn{
+  background-color: #101F3C;
+  border-color: #F35011;
+  color: #F35011;
+}
+#publish{
+  color:white
+}
+#recepientinput{
+  margin-left: 10%;
+}
+#messageinput{
+  margin-left: 20%;
+}
+#sendbtn{
+  margin-left: 20%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.no-outline:focus {
+  outline: none;
+}

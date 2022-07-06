@@ -20,7 +20,7 @@
   </div>
   <div class="modal fade" id="addquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content" id="addquestioncontent">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Create Assesment</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -44,34 +44,66 @@
                 <option value="hello">Django Hello World</option>
                 <option value="fib">Fibonacci Series</option>
               </select>
-              
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn" id="savebtn">Save changes</button>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg" id="publish" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content" id="publishcontent">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Publish and Invite</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-        <p>This is where we add assesment</p>
-        <p>This is where we add assesment</p>
+          <form class="container" action="submit">
+            <div class="section">
+              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
+              <select name="assesment" id="assesment">
+                <option value="arrays">Python Arrays</option>
+                <option value="angular">Angular Directives</option>
+                <option value="django">Django Assesment</option>
+                <option value="general">General Interview</option>
+              </select>&nbsp;
+              <label for="time"><b>Enter time for assesment : &nbsp;</b></label>
+              <input type="text" id="time" placeholder="Enter time in mins" name="time" required>
+              <button type="button" id="publishbtn" class="btn btn-primary">Publish</button>
+          
+            </div>
+          </form>
+          <br>
+          <div class="container" >   
+          <input  type="checkbox"> Send Invite?
+          <div class ="row" style="background-color:#101F3C; justify-content: center;">
+            <h6 style="text-decoration: underline;text-decoration-color: white;" >Send Invite</h6></div>
+            <div class="row" style="background-color:#101F3C; justify-content: left;">
+            <form action="" id="publishform">
+              &nbsp;<label for="recepient"><b>To : &nbsp;</b></label>
+              <input type="text" id="recepientinput" class="no-outline" placeholder="Enter emails separated by commas" name="recepient"   required><br>
+              &nbsp;<label for="Subject"><b>Subject : &nbsp;</b></label>
+              <input type="text" id="subjectinput" class="no-outline" placeholder="Subject of Mail" name="subject" required><br>
+              <input type="textarea" id="messageinput" class="no-outline" placeholder="Enter your message" name="message" required><br>
+              <button action="submit" id="sendbtn">Send</button>
+            </form>
+          </div>
+
+
+          
+        </div>
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn" id="savebtn">Save changes</button>
         </div>
       </div>
     </div>
