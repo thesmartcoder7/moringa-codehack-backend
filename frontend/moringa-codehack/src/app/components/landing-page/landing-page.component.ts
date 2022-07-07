@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticatedUserService } from '../../services/authenticated user/authenticated-user.service';
 import { User } from '../../classes/user/user';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +12,6 @@ export class LandingPageComponent implements OnInit {
   message = 'Please login or signup';
   pattern!: RegExp
   constructor(
-    private service: AuthenticatedUserService,
     private router: Router,
     private http: HttpClient
   ) {}
