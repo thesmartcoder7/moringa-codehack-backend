@@ -1,3 +1,3 @@
 # moringa-codehack-backend
 
-This is the backend repository for the moringa-code-hack
+This is the backend repository for the moringa-code-hack.
