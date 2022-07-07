@@ -4,7 +4,7 @@ from assessment.models import Assessment
 # Create your models here.
 class MCQuestion(models.Model):
     text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class MCQuestion(models.Model):
 
 
 class MCAnswer(models.Model):
-    text = models.TextField()
+    text = models.CharField(max_length=5000)
     correct = models.BooleanField(default=False)
     question = models.ForeignKey(MCQuestion, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -39,7 +39,7 @@ class MCAnswer(models.Model):
 
 class KataQuestion(models.Model):
     text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     all_tests_passed = models.BooleanField(default=False)
 
@@ -69,8 +69,9 @@ class KataTest(models.Model):
 
 class SQuestion(models.Model):
     text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    response = models.TextField(blank=True, null=True)
     marked_as_right = models.BooleanField(default=False)
 
     def __str__(self):
