@@ -1,1 +1,0 @@
- This is the basic structure of the frontend infrastructure
