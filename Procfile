@@ -1,0 +1,1 @@
+web: gunicorn moringa_codehack.wsgi
