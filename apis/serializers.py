@@ -43,7 +43,7 @@ class KataSerializer(serializers.ModelSerializer):
 
 
 
-class kataTest(serializers.ModelSerializer):
+class kataTestSerializer(serializers.ModelSerializer):
     class Meta:
         model = KataTest
         fields = '__all__'

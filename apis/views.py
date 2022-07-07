@@ -19,14 +19,14 @@ def get_users(request):
 @api_view(['GET'])
 def get_mcquestions(request):
     mcquestions = MCQuestion.objects.all()
-    serialized = MultipleChoiceAnswerSerializer(mcquestions, many=True)
+    serialized = MultipleChoiceSerializer(mcquestions, many=True)
     return Response(serialized.data)
 
 
 
 @api_view(['GET'])
-def get_squestions(request):
-    squestions = SQuestion.objects.all()
+def get_mcanswers(request):
+    squestions = MCAnswer.objects.all()
     serialized = MultipleChoiceAnswerSerializer(squestions, many=True)
     return Response(serialized.data)
 
@@ -39,11 +39,25 @@ def get_kataquestions(request):
     return Response(serialized.data)
 
 
+@api_view(['GET'])
+def get_katatests(request):
+    ktests = KataTest.objects.all()
+    serialized = kataTestSerializer(ktests, many=True)
+    return Response(serialized.data)
+
+
+@api_view(['GET'])
+def get_squestions(request):
+    squestions = SQuestion.objects.all()
+    serialized = SubjectiveSerializer(squestions, many=True)
+    return Response(serialized.data)
+
+
 
 @api_view(['GET'])
 def get_assessments(request):
     assessments = Assessment.objects.all()
-    serialized = MultipleChoiceAnswerSerializer(assessments, many=True)
+    serialized = AssessmentSerializer(assessments, many=True)
     return Response(serialized.data)
 
 

@@ -10,7 +10,9 @@ urlpatterns = [
     path('logout/', views.logout, name='api-logout'),
     path('assessments/', views.get_assessments, name='api-get-assessments'),
     path('mcquestions/', views.get_mcquestions, name='api-get-mcq'),
+    path('mcanswers/', views.get_mcanswers, name='api-get-mca'),
     path('squestions/', views.get_squestions, name='api-get-sq'),
     path('kata/', views.get_kataquestions, name='api-get-kataq'),
+    path('kata_tests/', views.get_katatests, name='api-get-katat'),
     path('add_assessment/', views.add_assessment, name='api-add-assessment'),
 ]
