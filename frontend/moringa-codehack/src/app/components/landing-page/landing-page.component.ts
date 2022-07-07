@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticatedUserService } from 'src/app/services/authenticated user/authenticated-user.service';
-import { User } from 'src/app/classes/user/user';
+import { AuthenticatedUserService } from '../../services/authenticated user/authenticated-user.service';
+import { User } from '../../classes/user/user';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
