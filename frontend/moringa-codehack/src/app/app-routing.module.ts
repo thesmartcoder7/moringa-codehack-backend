@@ -8,6 +8,10 @@ import { TmLandingComponent  } from './components/tm-landing/tm-landing.componen
 import{ StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
 import { AssessmentComponent  } from './components/assessment/assessment.component';
 import { PractiseTestComponent } from './components/practise-test/practise-test.component';
+import { TakeTestComponent} from './components/take-test/take-test.component';
+import { CreateTestComponent } from './components/create-test/create-test.component';
+import { PerformanceListComponent } from './components/performance-list/performance-list.component';
+import { GradesComponent } from './components/grades/grades.component';
 // import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
@@ -18,9 +22,10 @@ const routes: Routes = [
   { path: 'student-dashboard', component: StudentDashboardComponent},
   { path: 'assessment', component: AssessmentComponent},
   { path: 'practise-test', component: PractiseTestComponent},
+  { path: 'take-test', component: TakeTestComponent },
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
-  {path:'tmlanding/login', component:TmLandingComponent,
+  {path:'tmlanding/login', component:TmLandingComponent,   
 children:[{
   path:'', component:LoginComponent
 }]},
@@ -28,7 +33,19 @@ children:[{
 children:[{
   path:'', component:TmDashboardComponent
 }]},
-  
+{path:'tmlanding/create-test', component:TmLandingComponent,
+children:[{
+  path:'', component:CreateTestComponent
+}]},
+{path:'tmlanding/peformance-list', component:TmLandingComponent,
+children:[{
+  path:'', component:PerformanceListComponent
+}]},
+{path:'tmlanding/grades', component:TmLandingComponent,
+children:[{
+  path:'', component:GradesComponent
+}]},
+
 ];
 
 @NgModule({

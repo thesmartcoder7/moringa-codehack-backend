@@ -10,11 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LandingPageComponent implements OnInit {
   message = 'Please login or signup';
-  userEmail!:string
-  constructor(
-    private router: Router,
-    private http: HttpClient
-  ) {}
+  userEmail!: string;
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http
@@ -24,10 +21,13 @@ export class LandingPageComponent implements OnInit {
         { withCredentials: true }
       )
       .subscribe((res) => {
-        if(/@([a-z\S]+)/.exec(String(res.email))){
-          if(/@([a-z\S]+)/.exec(String(res.email))![1] == 'student.moringaschool.com'){
+        if (/@([a-z\S]+)/.exec(String(res.email))) {
+          if (
+            /@([a-z\S]+)/.exec(String(res.email))![1] ==
+            'student.moringaschool.com'
+          ) {
             this.router.navigate(['/student-dashboard']);
-          }else{
+          } else {
             this.router.navigate(['/tmlanding']);
           }
         }
