@@ -19,14 +19,14 @@ def get_users(request):
 @api_view(['GET'])
 def get_mcquestions(request):
     mcquestions = MCQuestion.objects.all()
-    serialized = MultipleChoiceAnswerSerializer(mcquestions, many=True)
+    serialized = MultipleChoiceSerializer(mcquestions, many=True)
     return Response(serialized.data)
 
 
 
 @api_view(['GET'])
-def get_squestions(request):
-    squestions = SQuestion.objects.all()
+def get_mcanswers(request):
+    squestions = MCAnswer.objects.all()
     serialized = MultipleChoiceAnswerSerializer(squestions, many=True)
     return Response(serialized.data)
 
@@ -39,11 +39,25 @@ def get_kataquestions(request):
     return Response(serialized.data)
 
 
+@api_view(['GET'])
+def get_katatests(request):
+    ktests = KataTest.objects.all()
+    serialized = kataTestSerializer(ktests, many=True)
+    return Response(serialized.data)
+
+
+@api_view(['GET'])
+def get_squestions(request):
+    squestions = SQuestion.objects.all()
+    serialized = SubjectiveSerializer(squestions, many=True)
+    return Response(serialized.data)
+
+
 
 @api_view(['GET'])
 def get_assessments(request):
     assessments = Assessment.objects.all()
-    serialized = MultipleChoiceAnswerSerializer(assessments, many=True)
+    serialized = AssessmentSerializer(assessments, many=True)
     return Response(serialized.data)
 
 
@@ -69,6 +83,7 @@ def register(request):
             serialized_user = UserSerializer(data=request.data)
             serialized_user.is_valid(raise_exception=True)
             serialized_user.save()
+            serialized_user.data.update({'message': 'Success! Please log in'})
             return Response(serialized_user.data)
     else:
         return Response({'message': 'Please register using the school email'})
@@ -77,15 +92,16 @@ def register(request):
 
 @api_view(['POST'])
 def login(request):
+    print("login endpoint is working")
     username = request.data['username']
     password = request.data['password']
     user = User.objects.filter(username=username).first()
 
     if not user:
-        raise AuthenticationFailed('User not found!')
+        return Response({'message': 'This user is not registered'})
 
     if not user.check_password(password):
-        raise AuthenticationFailed('Incorrect Password')
+        return Response({'message': 'You have entered the wrong password'})
 
     payload = {
         'id':user.id,
@@ -97,6 +113,7 @@ def login(request):
     response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True)
     response.data = {'jwt':token}
+    response.data.update({'message': 'Log in Successful'})
     return response
 
 
@@ -105,19 +122,20 @@ def login(request):
 def authenticated_user(request):
     token = request.COOKIES.get('jwt')
     if not token:
-        raise AuthenticationFailed('Unauthenticated!')
+        return Response({'message': 'No authenticated user found!'})
     try:
         payload = jwt.decode(token, 'this87295is9874my8574secret', algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
-        raise AuthenticationFailed('Unauthenticated!')
+        return Response({'message': 'Authentication token expired'})
 
     user = User.objects.filter(id=payload['id']).first()
     serialized_user = UserSerializer(user)
+    serialized_user.data.update({'message': 'User found'})
     return Response(serialized_user.data)
 
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def logout(request):
     response = Response()
     response.delete_cookie('jwt')
