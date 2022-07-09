@@ -24,7 +24,7 @@ class MCQuestion(models.Model):
 
 
 class MCAnswer(models.Model):
-    text = models.CharField(max_length=5000)
+    answer = models.CharField(max_length=5000)
     correct = models.BooleanField(default=False)
     question = models.ForeignKey(MCQuestion, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -38,9 +38,10 @@ class MCAnswer(models.Model):
 
 
 class KataQuestion(models.Model):
-    text = models.TextField()
+    question = models.TextField()
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    starter_code = models.CharField(max_length=500, blank=True, null=True)
     all_tests_passed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -57,7 +58,7 @@ class KataQuestion(models.Model):
 
 
 class KataTest(models.Model):
-    text = models.CharField(max_length=5000, help_text='Create a test for your kata question')
+    test = models.CharField(max_length=5000, help_text='Create a test for your kata question')
     question = models.ForeignKey(KataQuestion, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     
@@ -68,7 +69,7 @@ class KataTest(models.Model):
 
 
 class SQuestion(models.Model):
-    text = models.TextField()
+    question = models.TextField()
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     response = models.TextField(blank=True, null=True)
