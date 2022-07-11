@@ -41,11 +41,11 @@ class KataQuestion(models.Model):
     question = models.TextField()
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
-    starter_code = models.CharField(max_length=500, blank=True, null=True)
+    starter_code = models.TextField(blank=True, null=True)
     all_tests_passed = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.text)
+        return str(self.question)
 
     def get_tests(self):
         """ 
@@ -63,7 +63,7 @@ class KataTest(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"question: {self.question.text}, testcase: {self.text}"
+        return f"question: {self.question.question}, testcase: {self.test}"
 
 
 
