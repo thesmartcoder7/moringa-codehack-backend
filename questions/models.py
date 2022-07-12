@@ -4,7 +4,7 @@ from assessment.models import Assessment
 # Create your models here.
 class MCQuestion(models.Model):
     text = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
+    assessment = models.ManyToManyField(Assessment, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -30,7 +30,7 @@ class MCAnswer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
+        return f"question: {self.question.text}, answer: {self.answer}, correct: {self.correct}"
 
     class Meta:
         verbose_name_plural = 'Multiple Choice Answers'
@@ -39,7 +39,7 @@ class MCAnswer(models.Model):
 
 class KataQuestion(models.Model):
     question = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
+    assessment = models.ManyToManyField(Assessment, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     starter_code = models.TextField(blank=True, null=True)
     all_tests_passed = models.BooleanField(default=False)
@@ -70,7 +70,7 @@ class KataTest(models.Model):
 
 class SQuestion(models.Model):
     question = models.TextField()
-    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE, blank=True, null=True)
+    assessment = models.ManyToManyField(Assessment, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     response = models.TextField(blank=True, null=True)
     marked_as_right = models.BooleanField(default=False)
