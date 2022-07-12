@@ -42,11 +42,13 @@ def get_kataquestions(request):
     return Response(serialized.data)
 
 
+
 @api_view(['GET'])
 def get_katatests(request):
     ktests = KataTest.objects.all()
     serialized = kataTestSerializer(ktests, many=True)
     return Response(serialized.data)
+
 
 
 @api_view(['GET'])
@@ -65,12 +67,47 @@ def get_assessments(request):
 
 
 
+@api_view(['GET'])
+def get_feedback(request):
+    feedback = Feedback.objects.all()
+    serialized = FeedbackSerializer(feedback, many=True)
+    return Response(serialized.data)
+
+
+
+@api_view(['GET'])
+def get_invites(request):
+    invites = Invite.objects.all()
+    serialized = InviteSerializer(invites, many=True)
+    return Response(serialized.data)
+
+
+
 @api_view(['POST'])
 def add_assessment(request):
     serialized = AssessmentSerializer(data=request.data)
     if serialized.is_valid():
         serialized.save()
     return Response(serialized.data)
+
+
+
+@api_view(['POST'])
+def add_feedback(request):
+    serialized = FeedbackSerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+    return Response(serialized.data)
+
+
+
+@api_view(['POST'])
+def add_invite(request):
+    serialized = InviteSerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+    return Response(serialized.data)
+
 
 
 
