@@ -1,3 +1,4 @@
+from distutils.log import error
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from django.http import JsonResponse
@@ -6,6 +7,8 @@ from .serializers import *
 from users.models import User
 import jwt, datetime
 import re
+import sys
+import logging
 
 
 @api_view(['GET'])
@@ -113,7 +116,9 @@ def login(request):
     response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True)
     response.data = {'jwt':token}
+    print(response.data)
     response.data.update({'message': 'Log in Successful'})
+    print("login successful is working")
     return response
 
 
@@ -143,3 +148,36 @@ def logout(request):
         'message': 'Successful Logout'
     }
     return response
+
+
+
+@api_view(['POST'])
+def run_code(request):
+    action = request.data['action']
+    if action == 'run':
+        code = request.data['code']
+        original_stdout = sys.stdout
+        sys.stdout = open('user.txt', 'w')
+        exec(code)
+        sys.stdout.close()
+        sys.stdout = original_stdout 
+        output = open('user.txt', 'r').read()
+       
+        response = {
+            'message': 'Code run successfully',
+            'output': output
+        }
+        return Response(response)
+    else:
+        tests = KataTest.objects.filter(question=KataQuestion.objects.get(id=request.data['question']))
+        test_boolean = []
+        for test in tests:
+            code = (request.data['code'] + '\n')
+            original_stdout = sys.stdout
+            sys.stdout = open('user.txt', 'w')
+            exec(code + f"print({test.test})")
+            sys.stdout.close()
+            sys.stdout = original_stdout 
+            output = open('user.txt', 'r').read()
+            test_boolean.append(output.replace('\n', ''))
+        return Response({'message': test_boolean})

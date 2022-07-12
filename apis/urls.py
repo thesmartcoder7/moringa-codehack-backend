@@ -15,4 +15,5 @@ urlpatterns = [
     path('kata/', views.get_kataquestions, name='api-get-kataq'),
     path('kata_tests/', views.get_katatests, name='api-get-katat'),
     path('add_assessment/', views.add_assessment, name='api-add-assessment'),
+    path('run_code/', views.run_code, name='api-run-code'),
 ]
