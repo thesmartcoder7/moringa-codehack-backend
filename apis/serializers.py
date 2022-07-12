@@ -68,3 +68,17 @@ class MultipleChoiceAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = MCAnswer
         fields = '__all__'
+
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = '__all__'
+
+
+
+class InviteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Invite
+        fields = '__all__'

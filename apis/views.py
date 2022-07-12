@@ -1,3 +1,4 @@
+from distutils.log import error
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from django.http import JsonResponse
@@ -6,6 +7,8 @@ from .serializers import *
 from users.models import User
 import jwt, datetime
 import re
+import sys
+import logging
 
 
 @api_view(['GET'])
@@ -39,11 +42,13 @@ def get_kataquestions(request):
     return Response(serialized.data)
 
 
+
 @api_view(['GET'])
 def get_katatests(request):
     ktests = KataTest.objects.all()
     serialized = kataTestSerializer(ktests, many=True)
     return Response(serialized.data)
+
 
 
 @api_view(['GET'])
@@ -62,12 +67,47 @@ def get_assessments(request):
 
 
 
+@api_view(['GET'])
+def get_feedback(request):
+    feedback = Feedback.objects.all()
+    serialized = FeedbackSerializer(feedback, many=True)
+    return Response(serialized.data)
+
+
+
+@api_view(['GET'])
+def get_invites(request):
+    invites = Invite.objects.all()
+    serialized = InviteSerializer(invites, many=True)
+    return Response(serialized.data)
+
+
+
 @api_view(['POST'])
 def add_assessment(request):
     serialized = AssessmentSerializer(data=request.data)
     if serialized.is_valid():
         serialized.save()
     return Response(serialized.data)
+
+
+
+@api_view(['POST'])
+def add_feedback(request):
+    serialized = FeedbackSerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+    return Response(serialized.data)
+
+
+
+@api_view(['POST'])
+def add_invite(request):
+    serialized = InviteSerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+    return Response(serialized.data)
+
 
 
 
@@ -113,7 +153,9 @@ def login(request):
     response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True)
     response.data = {'jwt':token}
+    print(response.data)
     response.data.update({'message': 'Log in Successful'})
+    print("login successful is working")
     return response
 
 
@@ -143,3 +185,36 @@ def logout(request):
         'message': 'Successful Logout'
     }
     return response
+
+
+
+@api_view(['POST'])
+def run_code(request):
+    action = request.data['action']
+    if action == 'run':
+        code = request.data['code']
+        original_stdout = sys.stdout
+        sys.stdout = open('user.txt', 'w')
+        exec(code)
+        sys.stdout.close()
+        sys.stdout = original_stdout 
+        output = open('user.txt', 'r').read()
+       
+        response = {
+            'message': 'Code run successfully',
+            'output': output
+        }
+        return Response(response)
+    else:
+        tests = KataTest.objects.filter(question=KataQuestion.objects.get(id=request.data['question']))
+        test_boolean = []
+        for test in tests:
+            code = (request.data['code'] + '\n')
+            original_stdout = sys.stdout
+            sys.stdout = open('user.txt', 'w')
+            exec(code + f"print({test.test})")
+            sys.stdout.close()
+            sys.stdout = original_stdout 
+            output = open('user.txt', 'r').read()
+            test_boolean.append(output.replace('\n', ''))
+        return Response({'message': test_boolean})
