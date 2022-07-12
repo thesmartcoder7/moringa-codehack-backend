@@ -111,6 +111,13 @@ def add_invite(request):
 
 
 
+@api_view(['GET'])
+def get_student_data(request):
+    pass
+
+
+
+
 @api_view(['POST'])
 def register(request):
     regex = "@([a-z\S]+)"
