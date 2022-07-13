@@ -18,6 +18,19 @@ def get_users(request):
     return Response(serialized.data)
 
 
+@api_view(['GET'])
+def get_all_students(request):
+    users = User.objects.all()
+    students = []
+    for user in users:
+        regex = "@([a-z\S]+)"
+        result = re.split(regex, user.email)
+        if result[1] == "student.moringaschool.com":
+            students.append(user)
+    serialized = UserSerializer(students, many=True)
+    return Response(serialized.data)
+
+
 
 @api_view(['GET'])
 def get_mcquestions(request):
@@ -85,7 +98,16 @@ def get_invites(request):
 
 @api_view(['POST'])
 def add_assessment(request):
-    serialized = AssessmentSerializer(data=request.data)
+    new_assessment = {
+        "name":request.data['name'],
+        "topic":request.data['topic'],
+        "time_limit":request.data['time_limit'],
+        "pass_mark":request.data['pass_mark'],
+        "difficulty":request.data['difficulty'],
+        "category":request.data['category']
+    }
+
+    serialized = AssessmentSerializer(data=new_assessment)
     if serialized.is_valid():
         serialized.save()
     return Response(serialized.data)
@@ -108,6 +130,11 @@ def add_invite(request):
         serialized.save()
     return Response(serialized.data)
 
+
+
+@api_view(['GET'])
+def get_student_data(request):
+    pass
 
 
 

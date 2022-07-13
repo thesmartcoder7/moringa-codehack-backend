@@ -19,7 +19,7 @@ CATEGORIES = (
 class Assessment(models.Model):
     name = models.CharField(max_length=3000)
     topic = models.CharField(max_length=500)
-    time_limit = models.PositiveIntegerField(help_text='Duration of assessment in minutes')
+    time_limit = models.PositiveIntegerField(help_text='Duration of assessment in minutes', blank=True)
     pass_mark = models.PositiveIntegerField(help_text='Pass Score in %')
     difficulty = models.CharField(max_length=6, choices=DIFFICULTY_LEVELS)
     category = models.CharField(max_length=20, choices=CATEGORIES, null=True)
@@ -83,6 +83,7 @@ class Feedback(models.Model):
 class Invite(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
     users = models.TextField(help_text='Add student emails separated by spaces')
+    message = models.TextField(help_text='Add a message to the student', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'All Invites'

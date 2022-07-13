@@ -3,12 +3,12 @@ from assessment.models import Assessment
 
 # Create your models here.
 class MCQuestion(models.Model):
-    text = models.TextField()
+    question = models.TextField()
     assessment = models.ManyToManyField(Assessment, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.text)
+        return str(self.question)
 
     def get_answers(self):
         """ 
@@ -83,3 +83,6 @@ class SQuestion(models.Model):
 
 
 
+class SAnswer(models.Model):
+    question = models.ForeignKey(SQuestion, on_delete=models.DO_NOTHING)
+    answer = models.TextField(null=True, blank=True)
