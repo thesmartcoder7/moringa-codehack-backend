@@ -83,3 +83,6 @@ class SQuestion(models.Model):
 
 
 
+class SAnswer(models.Model):
+    question = models.ForeignKey(SQuestion, on_delete=models.DO_NOTHING)
+    answer = models.TextField(null=True, blank=True)
