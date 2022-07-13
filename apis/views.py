@@ -1,4 +1,4 @@
-from distutils.log import error
+
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from django.http import JsonResponse
@@ -132,9 +132,26 @@ def add_invite(request):
 
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_student_data(request):
-    pass
+    user = User.objects.get(username=request.data['username'])
+    all_invites = Invite.objects.all()
+    user_invites = []
+    user_assessments = []
+    user_grades = GradeSerializer(Grade.objects.filter(student=user), many=True).data
+    feedback = FeedbackSerializer(Feedback.objects.filter(student=user), many=True).data
+    for invite in all_invites:
+        if user.email in invite.users:
+            user_invites.append(InviteSerializer(invite).data)
+            user_assessments.append(AssessmentSerializer(invite.assessment).data)
+    user_details = {
+        'message': 'data retreval successful',
+        'invites': user_invites,
+        'assessments': user_assessments,
+        'grades': user_grades,
+        'feedback': feedback
+    }
+    return Response(user_details)
 
 
 
@@ -228,7 +245,7 @@ def run_code(request):
         output = open('user.txt', 'r').read()
        
         response = {
-            'message': 'Code run successfully',
+            'message': 'Code ran successfully',
             'output': output
         }
         return Response(response)

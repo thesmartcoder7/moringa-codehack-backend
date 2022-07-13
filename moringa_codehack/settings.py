@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'assessment.apps.AssessmentConfig',
     'questions.apps.QuestionsConfig',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [

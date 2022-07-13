@@ -77,6 +77,11 @@ class FeedbackSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class GradeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Grade
+        fields = '__all__'
+
 
 class InviteSerializer(serializers.ModelSerializer):
     class Meta:
