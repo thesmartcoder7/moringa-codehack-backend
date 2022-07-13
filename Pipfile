@@ -12,6 +12,7 @@ gunicorn = "*"
 django-heroku = "*"
 whitenoise = "*"
 heroku = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
