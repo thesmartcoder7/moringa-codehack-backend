@@ -1,7 +1,1 @@
-hello guys
-login endpoint is working
-{'jwt': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQsImV4cCI6MTY1NzY0NTU0NSwiaWF0IjoxNjU3NjQxOTQ1fQ.ZMAtefLcRzUFlVO1FJnF0QJxRhH2N5HcZSp7CcIeA9g'}
-login successful is working
-login endpoint is working
-{'jwt': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQsImV4cCI6MTY1NzY0NTU2NSwiaWF0IjoxNjU3NjQxOTY1fQ.UxHrZOxxxtP0wYl2mteIoa12eZTE5emiVELNLOV3H3Y'}
-login successful is working
+True
