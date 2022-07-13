@@ -27,7 +27,13 @@ SECRET_KEY = 'django-insecure-%z%@%*+x5bryfivq%pv#h52+u4rx8oh_a^1)oh8e6gjjj@wz4&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'https://api-moringa-codehack.herokuapp.com/',
+    "http://localhost:4200",
+    "http://127.0.0.1:4200",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    ]
 
 
 # Application definition
@@ -109,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
