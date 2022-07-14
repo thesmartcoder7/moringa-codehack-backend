@@ -10,6 +10,7 @@ urlpatterns = [
     path('authenticated_user/', views.authenticated_user, name='api-authenticated-user'),
     path('logout/', views.logout, name='api-logout'),
     path('assessments/', views.get_assessments, name='api-get-assessments'),
+    path('question/', views.get_single_question, name='api-get-question'),
     path('mcquestions/', views.get_mcquestions, name='api-get-mcq'),
     path('mcanswers/', views.get_mcanswers, name='api-get-mca'),
     path('squestions/', views.get_squestions, name='api-get-sq'),

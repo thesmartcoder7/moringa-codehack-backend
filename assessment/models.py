@@ -85,5 +85,8 @@ class Invite(models.Model):
     users = models.TextField(help_text='Add student emails separated by spaces')
     message = models.TextField(help_text='Add a message to the student', null=True, blank=True)
 
+    def __str__(self):
+        return f"Invite for {self.assessment}"
+
     class Meta:
         verbose_name_plural = 'All Invites'

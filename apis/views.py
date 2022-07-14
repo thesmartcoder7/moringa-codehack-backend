@@ -97,7 +97,25 @@ def get_invites(request):
 
 
 @api_view(['POST'])
+def get_single_question(request):
+    print(request.data['id'], request.data['category'])
+    assessment = AssessmentSerializer(Assessment.objects.filter(id=request.data['id']).first())
+    if request.data['category'] == 'kata':
+        question = KataSerializer(KataQuestion.objects.filter(assessment=assessment.data['id']).first())
+        tests = kataTestSerializer(KataTest.objects.filter(question=question.data['id']), many=True)
+        response = {
+            'assessment': assessment.data,
+            'question': question.data,
+            'tests': tests.data
+        }
+        return Response(response)  
+    return Response(assessment.data)
+
+
+
+@api_view(['POST'])
 def add_assessment(request):
+    print(request.data)
     new_assessment = {
         "name":request.data['name'],
         "topic":request.data['topic'],
@@ -110,6 +128,20 @@ def add_assessment(request):
     serialized = AssessmentSerializer(data=new_assessment)
     if serialized.is_valid():
         serialized.save()
+    if request.data['category'] == 'kata':
+        for id in request.data['kata_questions']:
+            question = KataQuestion.objects.get(id=id)
+            question.assessment.add(Assessment.objects.get(id=serialized.data['id']))
+    elif request.data['category'] == 'multiple_choice':
+        for id in request.data['multiple_choice']:
+            question = MCQuestion.objects.get(id=id)
+            question.assessment.add(Assessment.objects.get(id=serialized.data['id']))
+    else: 
+        for id in request.data['s_questions']:
+            question = SQuestion.objects.get(id=id)
+            question.assessment.add(Assessment.objects.get(id=serialized.data['id']))
+
+    
     return Response(serialized.data)
 
 
