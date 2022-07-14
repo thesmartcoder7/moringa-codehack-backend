@@ -227,7 +227,7 @@ def login(request):
     
     token = jwt.encode(payload, 'this87295is9874my8574secret', algorithm='HS256')
     response = Response()
-    response.set_cookie(key='jwt', value=token, httponly=True)
+    response.set_cookie(key='jwt', value=token, httponly=True, SameSite=None)
     response.data = {'jwt':token}
     print(response.data)
     response.data.update({'message': 'Log in Successful'})
